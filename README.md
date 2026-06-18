@@ -70,3 +70,4 @@ This tool provides an estimate only. It uses the following assumptions:
 
 > [!IMPORTANT]
 > Actual mortgage affordability can vary depending on lender criteria, credit history, debts, expenses, interest rates, deposit size, and regional lending rules.
+
