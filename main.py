@@ -70,3 +70,4 @@ print(
     f"£{monthly_payment:,.2f}.\n"
 )
 
+
