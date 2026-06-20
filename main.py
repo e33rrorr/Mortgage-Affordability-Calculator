@@ -1,4 +1,8 @@
+# Mortgage Affordability Calculator
+
 def calculate_total_income(number_of_applicants):
+    ''' Calculate the total annual income of all applicants. '''
+    
     annual_income = 0
 
     if number_of_applicants >= 1 and number_of_applicants <= 4:
@@ -12,62 +16,53 @@ def calculate_total_income(number_of_applicants):
         print("This calculator only works for 1 to 4 applicants.")
         exit()
 
+def calculate_estimated_bank_loan(annual_income):
+    ''' Calculate the estimated bank loan based on the total annual income. '''
 
-print("Welcome to the Mortgage Affordability Calculator")
+    income_multiplier = 4.5
+    estimated_bank_loan = annual_income * income_multiplier
+    return estimated_bank_loan
 
-number_of_applicants = int(input("Enter the number of applicants: "))
+def calculate_deposit(estimated_bank_loan):
+    ''' Calculate the estimated deposit based on the estimated bank loan. '''
+    
+    deposit_percentage = 0.10
+    estimated_deposit = estimated_bank_loan * deposit_percentage
+    return estimated_deposit
+
+def calculate_monthly_mortgage_payment(estimated_bank_loan, annual_interest_rate, mortgage_term_years):
+    ''' Calculate the estimated monthly mortgage payment based on the estimated bank loan, annual interest rate, and mortgage term. '''
+    
+    number_of_monthly_payments = mortgage_term_years * 12
+    monthly_interest_rate = annual_interest_rate / 100 / 12
+
+    if monthly_interest_rate == 0:
+        monthly_payment = estimated_bank_loan / number_of_monthly_payments
+    else:
+        monthly_payment = estimated_bank_loan * (
+            monthly_interest_rate * (1 + monthly_interest_rate) ** number_of_monthly_payments
+        ) / (
+            (1 + monthly_interest_rate) ** number_of_monthly_payments - 1
+        )
+
+    return monthly_payment
+
+
+print("----- Mortgage Affordability Calculator -----")
+
+number_of_applicants = int(input("How many people are applying for the mortgage? "))
 annual_income = calculate_total_income(number_of_applicants)
+estimated_bank_loan = calculate_estimated_bank_loan(annual_income)
+estimated_deposit = calculate_deposit(estimated_bank_loan)
 
-estimated_bank_loan = annual_income * 4.5
-estimated_deposit = estimated_bank_loan * 0.10
-estimated_property_price = estimated_bank_loan + estimated_deposit
+annual_interest_rate = float(input("Enter the annual interest rate: "))
+mortgage_term_years = int(input("Enter the mortgage term in years: "))
+monthly_payment = calculate_monthly_mortgage_payment(estimated_bank_loan, annual_interest_rate, mortgage_term_years)
 
-mortgage_term_years = int(input("How many years would you like your mortgage term to be? "))
-annual_interest_rate = float(input("What annual interest rate percentage would you like to use? "))
-
-# Calculates the estimated monthly mortgage repayment using the standard mortgage repayment formula.
-number_of_monthly_payments = mortgage_term_years * 12
-monthly_interest_rate = annual_interest_rate / 100 / 12
-
-if monthly_interest_rate == 0:
-    monthly_payment = estimated_property_price / number_of_monthly_payments
-
-else:
-    interest_growth = (1 + monthly_interest_rate) ** number_of_monthly_payments
-
-    top_part = monthly_interest_rate * interest_growth
-    bottom_part = interest_growth - 1
-
-    monthly_payment = estimated_property_price * (top_part / bottom_part)
-
-print()
+    
 print("\n----- Mortgage Affordability Estimate -----")
 
-print(f"\nEstimated bank loan: £{estimated_bank_loan:,.2f}")
-
-
-print("\n----- Deposit and Property Price Estimate -----")
-
-print(
-    "\nThe deposit you will need to make will vary from bank to bank, "
-    "but typically it is around 10% of the property price."
-)
-
-print(
-    "\nIf you add your deposit to the amount the bank is willing to lend you, "
-    "that gives you the estimated property price you may be able to afford."
-)
-
-print(
-    f"\nFor example, if the bank can lend you £{estimated_bank_loan:,.2f} "
-    f"and you have a deposit of £{estimated_deposit:,.2f}, "
-    f"then you could afford a property worth about £{estimated_property_price:,.2f}."
-)
-
-print(
-    f"\nBased on borrowing £{estimated_property_price:,.2f} over {mortgage_term_years} years "
-    f"at {annual_interest_rate}%, your estimated monthly mortgage payment would be "
-    f"£{monthly_payment:,.2f}.\n"
-)
-
-
+print(f"\nTotal annual income: £{annual_income:,.2f}")
+print(f"Estimated bank loan: £{estimated_bank_loan:,.2f}")
+print(f"Estimated deposit: £{estimated_deposit:,.2f}")
+print(f"Estimated monthly mortgage payment: £{monthly_payment:,.2f}")
