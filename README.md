@@ -43,18 +43,10 @@ python main.py
 ```text
 ----- Mortgage Affordability Estimate -----
 
-Estimated bank loan: GBP 292,500.00
-Estimated monthly mortgage payment: GBP 1,709.93
-
-The deposit you will need to make will vary from bank to bank, but typically
-it's around 10% of the house price.
-
-If you add your deposit to the amount the bank is willing to lend you, that
-gives you the estimated property price you can afford.
-
-For example, if the bank can lend you GBP 292,500.00 and you have a 10%
-deposit of GBP 29,250.00, then you could afford a property worth about
-GBP 321,750.00.
+Total annual income: £65,000.00
+Estimated bank loan: £292,500.00
+Estimated deposit: £29,250.00
+Estimated monthly mortgage payment: £1,709.93
 
 -------------------------------------------
 ```
