@@ -51,6 +51,19 @@ Estimated monthly mortgage payment: £1,709.93
 -------------------------------------------
 ```
 
+## Mortgage Payment Formula
+
+The estimated monthly mortgage payment is calculated using the standard repayment mortgage formula:
+
+M = P * (r * (1 + r)^n) / ((1 + r)^n - 1)
+
+Where:
+
+M = monthly mortgage payment
+P = mortgage loan amount
+r = monthly interest rate
+n = total number of monthly payments
+
 ## Calculator Assumptions
 
 This tool provides an estimate only. It uses the following assumptions:
