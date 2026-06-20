@@ -1,49 +1,26 @@
 # Mortgage Affordability Calculator
 
-A simple Python command-line tool for estimating mortgage affordability based on applicant income.
+A simple Python command-line tool for estimating mortgage affordability based on applicant income, income tax, National Insurance, deposit, interest rate, and mortgage term.
 
 ## Features
 
 The calculator:
 
-- Supports between 1 and 4 applicants
-- Combines the annual income of all applicants
-- Estimates the maximum bank loan using a 4.5x income multiplier
-- Calculates monthly mortgage payments using the chosen term and interest rate
-- Estimates a 10% deposit
-- Estimates the maximum affordable property price
-
-## Version 1
-
-This is the first version of the Mortgage Affordability Calculator. It runs in the terminal and focuses on providing a basic mortgage affordability estimate.
-
-The calculator asks for:
-
-- The number of applicants
-- The annual income of each applicant
-- The mortgage term in years
-- The annual interest rate
-
-Future versions may include additional property-buying costs, such as Stamp Duty, solicitor fees, mortgage broker fees, and more detailed affordability checks.
-
-## Usage
-
-1. Clone or download this repository.
-2. Open a terminal in the project directory.
-3. Run the following command:
-
-```bash
-python main.py
-```
-
-4. Follow the prompts in the terminal.
+* Supports between 1 and 4 applicants
+* Combines the annual gross income of all applicants
+* Calculates estimated monthly income after income tax and National Insurance
+* Estimates the maximum bank loan using a 4.5x income multiplier
+* Calculates monthly mortgage payments using the chosen term and interest rate
+* Estimates a 10% deposit
+* Estimates the maximum affordable property price
 
 ## Example Output
 
 ```text
 ----- Mortgage Affordability Estimate -----
 
-Total annual income: £65,000.00
+Total annual gross income: £65,000.00
+Total monthly income after tax and NI: £3,984.78
 Estimated bank loan: £292,500.00
 Estimated deposit: £29,250.00
 Estimated monthly mortgage payment: £1,709.93
@@ -68,11 +45,11 @@ n = total number of monthly payments
 
 This tool provides an estimate only. It uses the following assumptions:
 
-- Bank loan affordability is estimated as total annual income multiplied by 4.5.
-- Monthly payments assume a repayment mortgage with a fixed interest rate for the full term.
-- The deposit is estimated as 10% of the bank loan.
-- The property price is estimated by adding the deposit to the bank loan.
+* Bank loan affordability is estimated as total annual gross income multiplied by 4.5.
+* Monthly income after tax and NI is estimated using the income tax and National Insurance calculation in `take_home_calculator.py`.
+* Monthly payments assume a repayment mortgage with a fixed interest rate for the full term.
+* The deposit is estimated as 10% of the bank loan.
+* The property price is estimated by adding the deposit to the bank loan.
 
 > [!IMPORTANT]
-> Actual mortgage affordability can vary depending on lender criteria, credit history, debts, expenses, interest rates, deposit size, and regional lending rules.
-
+> Actual mortgage affordability can vary depending on lender criteria, credit history, debts, expenses, income type, tax rules, interest rates, deposit size, and regional lending rules.
