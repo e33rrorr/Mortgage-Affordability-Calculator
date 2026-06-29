@@ -17,6 +17,7 @@ The calculator:
 * Collects monthly expenses
 * Calculates total monthly expenses
 * Shows monthly take-home income remaining after expenses
+* Exports the monthly expenses breakdown to a styled Excel file (`monthly_expenses.xlsx`), including monthly and annual totals for each category
 
 ## Example Output
 
