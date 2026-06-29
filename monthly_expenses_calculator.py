@@ -28,7 +28,7 @@ class MonthlyExpensesCalculator:
         self.monthly_transport = float(input("Enter your monthly transport cost: £"))
         self.monthly_loans = float(input("Enter your monthly loan repayments: £"))
         self.monthly_credit_cards = float(input("Enter your monthly credit card repayments: £"))
-        self.monthly_childcare = float(input("Enter your monthly childcare cost, or 0 if none: £"))
+        self.monthly_childcare = float(input("Enter your monthly childcare cost: £"))
         self.monthly_other_expenses = float(input("Enter any other monthly expenses: £"))
 
     def calculate_total_monthly_expenses(self):
