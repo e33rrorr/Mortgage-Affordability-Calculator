@@ -1,5 +1,6 @@
 from take_home_calculator import TakeHomeIncomeCalculator
 from monthly_expenses_calculator import MonthlyExpensesCalculator
+from generate_expenses_xlsx import ExpensesExcelExporter
 
 
 def parse_amount(value):
@@ -121,6 +122,8 @@ expenses_calculator = MonthlyExpensesCalculator()
 expenses_calculator.get_monthly_expenses()
 total_monthly_expenses = expenses_calculator.calculate_total_monthly_expenses()
 income_after_expenses = total_monthly_take_home_income - total_monthly_expenses
+
+ExpensesExcelExporter(expenses_calculator).export()
 
 
 
