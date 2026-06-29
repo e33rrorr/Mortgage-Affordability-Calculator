@@ -2,6 +2,14 @@ from take_home_calculator import TakeHomeIncomeCalculator
 from monthly_expenses_calculator import MonthlyExpensesCalculator
 
 
+def parse_amount(value):
+    """Parse a monetary amount, accepting an optional 'k' suffix (e.g. 200k → 200000)."""
+    value = value.strip().lower()
+    if value.endswith("k"):
+        return float(value[:-1]) * 1000
+    return float(value)
+
+
 def get_number_of_applicants():
     """Ask for and validate a number of applicants between 1 and 4."""
     while True:
@@ -93,7 +101,7 @@ print("----- Mortgage Affordability Calculator -----\n")
 number_of_applicants = get_number_of_applicants()
 annual_income, total_monthly_take_home_income = calculate_total_income(number_of_applicants)
 estimated_bank_loan = calculate_estimated_bank_loan(annual_income)
-property_price = float(input("Enter the property price: £"))
+property_price = parse_amount(input("Enter the property price: £"))
 estimated_deposit = calculate_deposit(property_price)
 mortgage_amount = property_price - estimated_deposit
 
