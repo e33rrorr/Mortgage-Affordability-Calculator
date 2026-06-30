@@ -30,19 +30,19 @@ class TakeHomeIncomeCalculator:
         if self.annual_salary <= TAX_FREE_ALLOWANCE:
             return 0
 
-        elif self.annual_salary > BASIC_RATE_STARTS_AT and self.annual_salary <= BASIC_RATE_ENDS_AT:
+        elif self.annual_salary >= BASIC_RATE_STARTS_AT and self.annual_salary <= BASIC_RATE_ENDS_AT:
             tax = (self.annual_salary - TAX_FREE_ALLOWANCE) * BASIC_RATE
             return tax
 
-        elif self.annual_salary > HIGHER_RATE_STARTS_AT and self.annual_salary <= HIGHER_RATE_ENDS_AT:
+        elif self.annual_salary >= HIGHER_RATE_STARTS_AT and self.annual_salary <= HIGHER_RATE_ENDS_AT:
             tax = (BASIC_RATE_ENDS_AT - TAX_FREE_ALLOWANCE) * BASIC_RATE + (self.annual_salary - HIGHER_RATE_STARTS_AT) * HIGHER_RATE
             return tax
         
         else:
-            additional_rate_tax = (self.annual_salary - HIGHER_RATE_ENDS_AT) * ADDITIONAL_RATE
-            higher_rate_tax = (HIGHER_RATE_ENDS_AT - HIGHER_RATE_STARTS_AT) * HIGHER_RATE
-            basic_rate_tax = BASIC_RATE_ENDS_AT * BASIC_RATE
-            tax = additional_rate_tax + higher_rate_tax + basic_rate_tax
+            basic_rate_tax = 50270 * BASIC_RATE                              # 20% on first £50,270
+            higher_rate_tax = (125140 - 50270) * HIGHER_RATE                 # 40% on £50,270–£125,140
+            additional_rate_tax = (self.annual_salary - 125140) * ADDITIONAL_RATE  # 45% on the rest
+            tax = basic_rate_tax + higher_rate_tax + additional_rate_tax
             return tax
 
         
